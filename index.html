@@ -14,11 +14,7 @@
   </head>
   <body>
     <div class="top">
-      <input
-        class="search-bar"
-        type="text"
-        placeholder="Cerca qui il tuo film"
-      />
+      <input class="search-bar" type="text" placeholder="Cosa vuoi guardare?" />
       <button id="go">Search</button>
     </div>
 
@@ -50,6 +46,12 @@
             Voto:
           </span>
           {{{vote_average}}}
+        </h3>
+        <h3 class="genre">
+          <span class="bold">
+            Genere:
+          </span>
+          {{type}}
         </h3>
       </li>
     </script>
