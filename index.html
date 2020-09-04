@@ -19,11 +19,18 @@
     </div>
 
     <div class="page">
+      <h2>Film</h2>
       <ul class="film-list"></ul>
+      <h2>Serie Tv</h2>
+      <ul class="tv-list"></ul>
     </div>
 
     <script id="film-template" type="text/x-handlebars-template">
       <li>
+        <img
+          src="https://image.tmdb.org/t/p/w342{{poster}}"
+          alt="img. poster di {{title}}"
+        />
         <h3 class="titolo">
           <span class="bold">
             Titolo:
@@ -49,7 +56,7 @@
         </h3>
         <h3 class="genre">
           <span class="bold">
-            Genere:
+            Tipo:
           </span>
           {{type}}
         </h3>

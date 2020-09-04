@@ -4,6 +4,7 @@ $(document).ready(function () {
     $(".search-bar").val("");
     // $(".search-bar").attr("placeholder", "Cosa vuoi guardare?");
     $(".film-list").empty();
+    $(".tv-list").empty();
 
     search(input, "movie");
     search(input, "tv");
@@ -25,7 +26,9 @@ function search(data, type) {
     },
     success: function (risp) {
       if (risp.total_results == 0) {
-        $(".film-list").html("Nessun risultato corrispondente a " + data);
+        $(".film-list").html(
+          "Nessun risultato corrispondente a " + data + " " + type
+        );
         return;
       }
       print(risp.results, type);
@@ -40,12 +43,12 @@ function print(data, type) {
   var source = $("#film-template").html();
   var template = Handlebars.compile(source);
 
-  if (type == "tv") {
-    type = "Film";
-  } else {
-    type = "Serie TV";
-  }
-
+  // if (type == "movie") {
+  //   type = "Film";
+  // } else {
+  //   type = "Serie TV";
+  // }
+  // console.log(type);
   for (var i = 0; i < data.length; i++) {
     var context = {
       title: data[i].title || data[i].name,
@@ -53,9 +56,17 @@ function print(data, type) {
       original_language: flag(data[i].original_language),
       vote_average: stellina(data[i].vote_average),
       type: type,
+      poster: data[i].poster_path,
     };
+    console.log(context);
     var html = template(context);
-    $(".film-list").append(html);
+    if (type == "movie") {
+      // type = "Film";
+      $(".film-list").append(html);
+    } else if (type == "tv") {
+      // type = "Serie TV";
+      $(".tv-list").append(html);
+    }
   }
 }
 
@@ -83,11 +94,18 @@ function stellina(n) {
 //}
 
 function flag(lang) {
-  var symb = "";
-  if (lang == "it" || lang == "en") {
-    symb = '<img src="img/' + lang + '.svg"/>';
+  var lingue = ["it", "en"];
+  if (lingue.includes(lang)) {
+    return '<img src="img/' + lang + '.svg"/>';
   } else {
-    symb = lang;
+    return lang;
+
+    // var symb = "";                        //** Versione senza l'array di lingue */
+    // if (lang == "it" || lang == "en") {
+    //   symb = '<img src="img/' + lang + '.svg"/>';
+    // } else {
+    //   symb = lang;
+    // }
+    // return symb;
   }
-  return symb;
 }
