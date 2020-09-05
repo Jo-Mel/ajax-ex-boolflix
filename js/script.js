@@ -2,20 +2,6 @@ $(document).ready(function () {
   var source = $("#film-template").html();
   var template = Handlebars.compile(source);
 
-  for (var i = 0; i < 10; i++) {
-    var context = {
-      title: "Rocco va in Polonia",
-      original_title: "Rocco va in Polonia",
-      original_language: "it",
-      vote_average: stellina(5),
-      type: "Film",
-      poster: "https://via.placeholder.com/342x513",
-    };
-
-    var html = template(context);
-    $(".film-list").append(html);
-  }
-
   $("button#go").click(function () {
     var input = $("input.search-bar").val();
     $(".search-bar").val("");
