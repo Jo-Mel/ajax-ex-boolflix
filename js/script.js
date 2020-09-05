@@ -1,4 +1,21 @@
 $(document).ready(function () {
+  var source = $("#film-template").html();
+  var template = Handlebars.compile(source);
+
+  for (var i = 0; i < 10; i++) {
+    var context = {
+      title: "Rocco va in Polonia",
+      original_title: "Rocco va in Polonia",
+      original_language: "it",
+      vote_average: stellina(5),
+      type: "Film",
+      poster: "https://via.placeholder.com/342x513",
+    };
+
+    var html = template(context);
+    $(".film-list").append(html);
+  }
+
   $("button#go").click(function () {
     var input = $("input.search-bar").val();
     $(".search-bar").val("");
@@ -43,28 +60,23 @@ function print(data, type) {
   var source = $("#film-template").html();
   var template = Handlebars.compile(source);
 
-  // if (type == "movie") {
-  //   type = "Film";
-  // } else {
-  //   type = "Serie TV";
-  // }
-  // console.log(type);
   for (var i = 0; i < data.length; i++) {
     var context = {
       title: data[i].title || data[i].name,
       original_title: data[i].original_title || data[i].original_name,
       original_language: flag(data[i].original_language),
       vote_average: stellina(data[i].vote_average),
-      type: type,
-      poster: data[i].poster_path,
+      type: type == "movie" ? "Film" : "Serie Tv", // uso l'operatore di confronto ternario
+      poster:
+        data[i].poster_path !== null
+          ? "https://image.tmdb.org/t/p/w342" + data[i].poster_path
+          : "https://via.placeholder.com/342x513",
     };
-    console.log(context);
+
     var html = template(context);
     if (type == "movie") {
-      // type = "Film";
       $(".film-list").append(html);
     } else if (type == "tv") {
-      // type = "Serie TV";
       $(".tv-list").append(html);
     }
   }

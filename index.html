@@ -14,8 +14,15 @@
   </head>
   <body>
     <div class="top">
-      <input class="search-bar" type="text" placeholder="Cosa vuoi guardare?" />
-      <button id="go">Search</button>
+      <h1>BoolFlix</h1>
+      <div class="search">
+        <input
+          class="search-bar"
+          type="text"
+          placeholder="Cosa vuoi guardare?"
+        />
+        <button id="go">Search</button>
+      </div>
     </div>
 
     <div class="page">
@@ -27,39 +34,38 @@
 
     <script id="film-template" type="text/x-handlebars-template">
       <li>
-        <img
-          src="https://image.tmdb.org/t/p/w342{{poster}}"
-          alt="img. poster di {{title}}"
-        />
-        <h3 class="titolo">
-          <span class="bold">
-            Titolo:
-          </span>{{title}}
-        </h3>
-        <h3 class="titolo-originale">
-          <span class="bold">
-            Titolo originale:
-          </span>
-          {{original_title}}
-        </h3>
-        <h3 class="lang">
-          <span class="bold">
-            Lingua:
-          </span>
-          {{{original_language}}}
-        </h3>
-        <h3 class="rate">
-          <span class="bold">
-            Voto:
-          </span>
-          {{{vote_average}}}
-        </h3>
-        <h3 class="genre">
-          <span class="bold">
-            Tipo:
-          </span>
-          {{type}}
-        </h3>
+        <img src="{{poster}}" alt="poster di {{title}}" />
+        <div>
+          <h3 class="titolo">
+            <span class="bold">
+              Titolo:
+            </span>{{title}}
+          </h3>
+          <h3 class="titolo-originale">
+            <span class="bold">
+              Titolo originale:
+            </span>
+            {{original_title}}
+          </h3>
+          <h3 class="lang">
+            <span class="bold">
+              Lingua:
+            </span>
+            {{{original_language}}}
+          </h3>
+          <h3 class="rate">
+            <span class="bold">
+              Voto:
+            </span>
+            {{{vote_average}}}
+          </h3>
+          <h3 class="genre">
+            <span class="bold">
+              Tipo:
+            </span>
+            {{type}}
+          </h3>
+        </div>
       </li>
     </script>
     <script src="js/script.js"></script>
