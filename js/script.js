@@ -1,7 +1,4 @@
 $(document).ready(function () {
-  var source = $("#film-template").html();
-  var template = Handlebars.compile(source);
-
   $("button#go").click(function () {
     var input = $("input.search-bar").val();
     $(".search-bar").val("");
