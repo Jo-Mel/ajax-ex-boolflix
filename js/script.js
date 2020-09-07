@@ -1,4 +1,21 @@
 $(document).ready(function () {
+  var source = $("#film-template").html(); //**Tamplate per le prove con css */
+  var template = Handlebars.compile(source);
+
+  for (var i = 0; i < 10; i++) {
+    var context = {
+      title: "Ciao",
+      original_title: "Ciao",
+      original_language: "it",
+      vote_average: stellina(5),
+      type: "Film",
+      poster: "https://via.placeholder.com/342x513",
+    };
+
+    var html = template(context);
+    $(".film-list").append(html);
+  }
+
   $("button#go").click(function () {
     var input = $("input.search-bar").val();
     $(".search-bar").val("");
