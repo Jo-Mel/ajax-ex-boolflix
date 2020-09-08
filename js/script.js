@@ -17,14 +17,13 @@ $(document).ready(function () {
   }
 
   $("button#go").click(function () {
-    var input = $("input.search-bar").val();
-    $(".search-bar").val("");
-    // $(".search-bar").attr("placeholder", "Cosa vuoi guardare?");
-    $(".film-list").empty();
-    $(".tv-list").empty();
+    init();
+  });
 
-    search(input, "movie");
-    search(input, "tv");
+  $("input.search-bar").keydown(function () {
+    if (event.which == 13 || event.keyCode == 13) {
+      init();
+    }
   });
 });
 
@@ -32,6 +31,18 @@ $(document).ready(function () {
 /**
  * type = 'tv' | 'movie'
  */
+
+function init() {
+  var input = $("input.search-bar").val();
+  $(".search-bar").val("");
+  // $(".search-bar").attr("placeholder", "Cosa vuoi guardare?");
+  $(".film-list").empty();
+  $(".tv-list").empty();
+
+  search(input, "movie");
+  search(input, "tv");
+}
+
 function search(data, type) {
   $.ajax({
     url: "https://api.themoviedb.org/3/search/" + type,
@@ -71,6 +82,7 @@ function print(data, type) {
         data[i].poster_path !== null
           ? "https://image.tmdb.org/t/p/w342" + data[i].poster_path
           : "https://via.placeholder.com/342x513",
+      overview: data[i].overview.substring(0, 250) + " [...]",
     };
 
     var html = template(context);
