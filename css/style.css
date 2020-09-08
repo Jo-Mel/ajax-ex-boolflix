@@ -13,9 +13,9 @@
     background-color: #0B0B0B;
 }
 
-h1 {
+.logo {
     color: #B60000;
-    font-size: 44px;
+    font-size: 48px;
     padding-left: 70px;
 }
 
@@ -26,24 +26,34 @@ h1 {
 .search-bar {
     width: 250px;
     height: 25px;
+    background-color: #201b1c;
+    color: whitesmoke;
+    font-size: 18px;
     border: 1px solid transparent;
-    border-radius: 4px;
-    padding: 8px;
+    border-radius: 8px;
+    padding: 16px 8px;
     margin-right: 6px;
 }
 
 .search button {
+    background-color: #0B0B0B;
+    color: dimgray;
+    font-size: 28px;
+    border: none;
     width: 50px;
-    height: 25px;
+}
 
+#go:hover {
+    transform: scale(1.2);
+    transition: all 200ms ease-in-out;
 }
 
 body {
-    background-color: #3D3D3D;
+    background-color: #201b1c;
 }
 
 .card {
-    margin: 10px;
+    margin: 8px;
     position: relative;
     height: 513px;
     transition: all 200ms ease-in-out;
@@ -61,7 +71,7 @@ body {
 }
 
 .card:hover {
-    transform: scale(1.2);
+    transform: scale(1.08);
     z-index: 1;
 }
 
@@ -70,19 +80,19 @@ body {
 }
 
 .page {
-    width: 80%;
+    width: 90%;
     margin: 10px auto;
     height: 100%;
     /* background-color: #3D3D3D; */
-    color: whitesmoke;
+    color: rgb(151, 143, 143);
 }
 
 .film-strip {
     display: flex;
     flex-direction: row;
     justify-content: center;
-
     overflow-x: auto;
+    overflow-y: hidden;
     list-style: none;
 }
 
