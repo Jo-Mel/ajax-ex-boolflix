@@ -58,7 +58,8 @@ span {
 }
 
 .card {
-    margin: 8px;
+    padding: 8px;
+    /* margin: 8px; */
     position: relative;
     height: 513px;
     transition: all 200ms ease-in-out;
